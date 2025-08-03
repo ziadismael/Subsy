@@ -7,7 +7,6 @@ export const getAllUsers = async (req, res, next) => {
             success: true,
             data: users,
     });
-        next();
     } catch (error){
         next(error);
     }

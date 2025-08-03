@@ -16,7 +16,9 @@ const authorize = async (req, res, next) => {
 
         const decoded = jwt.verify(token, JWT_SECRET);
 
-        const user = await User.findById(decoded.id);
+        console.log("✅ Decoded Token:", decoded);
+        const user = await User.findById(decoded.userID); // ✅ This matches your token payload
+
 
         if (!user) {
             return res.status(401).json({message : "Not Authorized"});
