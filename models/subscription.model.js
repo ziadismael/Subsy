@@ -24,10 +24,10 @@ const subscriptionSchema = new mongoose.Schema({
         type: String,
         enum: ['Daily', 'Weekly', 'Monthly', 'Yearly'],
     },
-    category: {
-        type: String,
-        enum: ['Mathematical Science', 'Biological Science', 'Literature'],
-    },
+    // category: {
+    //     type: String,
+    //     enum: ['Mathematical Science', 'Biological Science', 'Literature'],
+    // },
     paymentMethod: {
         type: String,
         required: true,
@@ -35,8 +35,8 @@ const subscriptionSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        required: true,
         enum: ['Active', 'Expired', 'Cancelled'],
+        default: 'Active',
     },
     startDate: {
         type: Date,
@@ -48,7 +48,6 @@ const subscriptionSchema = new mongoose.Schema({
     },
     renewalDate: {
         type: Date,
-        required: true,
         validate: {
             validator: function (value) {
                 return value > this.startDate;
